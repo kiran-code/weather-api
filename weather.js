@@ -10,7 +10,7 @@ class Weather{
 
     console.log('getCurrentWeather');
 
-    const url = `http://api.weatherbit.io/v2.0/current?state=${this.state}&city=${this.city}&key=${this.api_key}`;
+    const url = `https://api.weatherbit.io/v2.0/current?state=${this.state}&city=${this.city}&key=${this.api_key}`;
     
     const response = await fetch(url);
 
