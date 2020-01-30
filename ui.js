@@ -17,6 +17,7 @@ class UI{
     this.location.textContent = weatherData.city_name;
     this.description.textContent = weatherData.weather.description;
     this.temperatureString.textContent = `${weatherData.temp}${this.ascii(176)}`;
+    
     // this.icon.setAttribute('src', weatherData.weather.code);
     this.precipitation.textContent = `Precipitation: ${weatherData.precip}`;
     this.dewpoint.textContent = `dew point:  ${weatherData.dewpt}${this.ascii(176)}`;
