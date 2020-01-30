@@ -16,10 +16,10 @@ class UI{
     console.log('loadWeatherData ', weatherData);
     this.location.textContent = weatherData.city_name;
     this.description.textContent = weatherData.weather.description;
-    this.temperatureString.textContent = `${this.ascii(weatherData.temp)}`;
+    this.temperatureString.textContent = `${weatherData.temp}${this.ascii(176)}`;
     // this.icon.setAttribute('src', weatherData.weather.code);
     this.precipitation.textContent = `Precipitation: ${weatherData.precip}`;
-    this.dewpoint.textContent = `dew point:  ${weatherData.dewpt}`;
+    this.dewpoint.textContent = `dew point:  ${weatherData.dewpt}${this.ascii(176)}`;
     this.sunset.textContent = `Sunset: ${weatherData.sunset}`;
     this.windSpeed.textContent = `Wind Speed: ${weatherData.wind_spd}`;
   }  
