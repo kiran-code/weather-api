@@ -5,18 +5,14 @@ const lsStorage = new LSStorage();
 document.addEventListener('DOMContentLoaded', loadWeatherData);
 
 function loadWeatherData(){
-  let weatherData = lsStorage.loadFromLS();
-  if(weatherData === null){
-    weatherApi.getCurrentWeather()
-            .then(results => {
-              ui.loadWeatherData(results);
-              lsStorage.setStorage(results);
-            })
-            .catch(err => console.log(err));
-  } else {
-    ui.loadWeatherData(weatherData);
-  }
-    
+  let locationData = lsStorage.getLocationData();
+  weatherApi.changeLocation(locationData);
+  
+  weatherApi.getCurrentWeather()
+          .then(results => {
+            ui.loadWeatherData(results);
+          })
+          .catch(err => console.log(err));
 }
 
 const modal = document.querySelector('#w-change-btn'); 
@@ -26,13 +22,17 @@ modal.addEventListener('click', getWeatherData);
 function getWeatherData(){
   const city = document.querySelector('#city').value;
   const state = document.querySelector('#state').value;
-  const country = document.querySelector('#country').value;
 
-  weatherApi.changeLocation(city, state, country);
+  let locationData = {
+    city: city,
+    state: state
+  }
+
+  weatherApi.changeLocation(locationData);
 
   weatherApi.getCurrentWeather().then((results) => {
     ui.loadWeatherData(results);
-    lsStorage.setStorage(results);
+    lsStorage.setLocationData(locationData);
     $('#locModal').modal('hide');
   });
 }

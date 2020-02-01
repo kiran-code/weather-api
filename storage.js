@@ -1,18 +1,33 @@
 class LSStorage {
   constructor(){
-
+    this.city;
+    this.state;
+    this.defaultCity = 'Dallas';
+    this.defaultState = 'TX';
   }
 
-  loadFromLS(){
-    if(localStorage.getItem('weatherData') !== null){
-      return JSON.parse(localStorage.getItem('weatherData'));
-    } else {
-      return null;
+  getLocationData(){
+    if(localStorage.getItem('city') === null){
+      this.city = this.defaultCity;
+    } else{
+      this.city = localStorage.getItem('city');
     }
+
+    if(localStorage.getItem('state') === null){
+      this.state = this.defaultState;
+    } else{
+      this.state = localStorage.getItem('state');
+    }
+
+    let locationData = {
+      city: this.city,
+      state: this.state
+    }
+    return locationData;
   }
 
-  setStorage(weatherData){
-    localStorage.clear();
-    localStorage.setItem('weatherData', JSON.stringify(weatherData));
+  setLocationData({city, state}){
+    localStorage.setItem('city', city);
+    localStorage.setItem('state', state);
   }
 }
