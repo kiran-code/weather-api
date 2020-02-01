@@ -33,6 +33,7 @@ function getWeatherData(){
   weatherApi.getCurrentWeather().then((results) => {
     ui.loadWeatherData(results);
     lsStorage.setStorage(results);
+    $('#locModal').modal('hide');
   });
 }
 
