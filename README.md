@@ -11,7 +11,8 @@ https://www.weatherbit.io/api/codes
 
 
 
-**************************************Useful Code Snippets**********************************************************
+Useful Code Snippets
+
 $("#test").click(function(){ 
     $("#lat").val("29" + ascii(176))
 });
